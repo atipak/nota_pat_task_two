@@ -1,0 +1,205 @@
+{
+	"additionalNodes": [],
+	"additionalParameters": {
+		"root": {
+			"height": 88,
+			"width": 180
+		}
+	},
+	"inputs": [],
+	"outputs": [],
+	"properties": {
+		"1lJtYJaDraW1igcQa0T8cDOdpyBkmPLk": {
+			"height": 94,
+			"title": "store",
+			"width": 362,
+			"x": 410,
+			"y": -155
+		},
+		"3e8bOMoggFc73MCFz8OBJtv3CrsmVyWN": {
+			"height": 60,
+			"title": "sequence",
+			"width": 143,
+			"x": 465,
+			"y": 135
+		},
+		"6zCPprn6eNWeTBVvaulIlVZ0YPba5k9W": {
+			"height": 74,
+			"title": "nota_pat_task_two.unload",
+			"width": 409,
+			"x": 647,
+			"y": 134
+		},
+		"9KYes1jMTVHiuft6Cta7qQux3pdCba0a": {
+			"height": 94,
+			"title": "store",
+			"width": 374,
+			"x": 411,
+			"y": -248
+		},
+		"Qi4zrCcjvJY1Fr6iarMu9yr5NjyUVuR7": {
+			"height": 94,
+			"title": "nota_pat_task_two.captureHills",
+			"width": 409,
+			"x": 644,
+			"y": 212
+		},
+		"VaBYN1pe2BYW63LZw4pvVJ78nS3O9Azc": {
+			"height": 60,
+			"title": "repeat",
+			"width": 131,
+			"x": 303,
+			"y": 137
+		},
+		"c4fHR4hRIaRHVblibSuJEFtAWCaHvErW": {
+			"height": 94,
+			"title": "nota_pat_task_two.moveTransporter",
+			"width": 409,
+			"x": 649,
+			"y": 36
+		},
+		"te2DHJ7urQYDJIYciw2qJ3C13cO2Py8t": {
+			"height": 92,
+			"title": "nota_pat_task_two.load",
+			"width": 409,
+			"x": 645,
+			"y": -56
+		},
+		"wWZivytOcoHBfAswZYanYtZ723W3dcsP": {
+			"height": 94,
+			"title": "store",
+			"width": 350,
+			"x": 410,
+			"y": -62
+		},
+		"ww3aj0m91Hua1rA7vi8dTlcM0vwnc2TQ": {
+			"height": 60,
+			"title": "sequence",
+			"width": 143,
+			"x": 206,
+			"y": 6
+		}
+	},
+	"roles": [ {
+		"categories": [],
+		"name": "Others"
+	} ],
+	"root": {
+		"children": [ {
+			"children": [],
+			"id": "9KYes1jMTVHiuft6Cta7qQux3pdCba0a",
+			"nodeType": "luaCommand",
+			"parameters": [ {
+				"name": "var",
+				"value": "enemy"
+			}, {
+				"name": "value",
+				"value": "Sensors.core.MissionInfo().enemyPositions[1]"
+			}, {
+				"name": "scriptName",
+				"value": "store"
+			} ],
+			"scriptName": "store"
+		}, {
+			"children": [],
+			"id": "1lJtYJaDraW1igcQa0T8cDOdpyBkmPLk",
+			"nodeType": "luaCommand",
+			"parameters": [ {
+				"name": "var",
+				"value": "transporter"
+			}, {
+				"name": "value",
+				"value": "Sensors.nota_pat_task_two.TransporterId()"
+			}, {
+				"name": "scriptName",
+				"value": "store"
+			} ],
+			"scriptName": "store"
+		}, {
+			"children": [],
+			"id": "wWZivytOcoHBfAswZYanYtZ723W3dcsP",
+			"nodeType": "luaCommand",
+			"parameters": [ {
+				"name": "var",
+				"value": "hillsPositions"
+			}, {
+				"name": "value",
+				"value": "Sensors.nota_pat_task_two.HillsPosition()"
+			}, {
+				"name": "scriptName",
+				"value": "store"
+			} ],
+			"scriptName": "store"
+		}, {
+			"children": [ {
+				"children": [ {
+					"children": [],
+					"id": "te2DHJ7urQYDJIYciw2qJ3C13cO2Py8t",
+					"nodeType": "luaCommand",
+					"parameters": [ {
+						"name": "transporterId",
+						"value": "transporter"
+					}, {
+						"name": "unitsToLoad",
+						"value": "{}"
+					}, {
+						"name": "scriptName",
+						"value": "nota_pat_task_two.load"
+					} ],
+					"scriptName": "nota_pat_task_two.load"
+				}, {
+					"children": [],
+					"id": "c4fHR4hRIaRHVblibSuJEFtAWCaHvErW",
+					"nodeType": "luaCommand",
+					"parameters": [ {
+						"name": "targetPosition",
+						"value": "enemy"
+					}, {
+						"name": "transporterId",
+						"value": "transporter"
+					}, {
+						"name": "scriptName",
+						"value": "nota_pat_task_two.moveTransporter"
+					} ],
+					"scriptName": "nota_pat_task_two.moveTransporter"
+				}, {
+					"children": [],
+					"id": "6zCPprn6eNWeTBVvaulIlVZ0YPba5k9W",
+					"nodeType": "luaCommand",
+					"parameters": [ {
+						"name": "transporterId",
+						"value": "transporter"
+					}, {
+						"name": "scriptName",
+						"value": "nota_pat_task_two.unload"
+					} ],
+					"scriptName": "nota_pat_task_two.unload"
+				}, {
+					"children": [],
+					"id": "Qi4zrCcjvJY1Fr6iarMu9yr5NjyUVuR7",
+					"nodeType": "luaCommand",
+					"parameters": [ {
+						"name": "hillsPositions",
+						"value": "hillsPositions"
+					}, {
+						"name": "transporterId",
+						"value": "transporter"
+					}, {
+						"name": "scriptName",
+						"value": "nota_pat_task_two.captureHills"
+					} ],
+					"scriptName": "nota_pat_task_two.captureHills"
+				} ],
+				"id": "3e8bOMoggFc73MCFz8OBJtv3CrsmVyWN",
+				"nodeType": "sequence",
+				"parameters": []
+			} ],
+			"id": "VaBYN1pe2BYW63LZw4pvVJ78nS3O9Azc",
+			"nodeType": "repeat",
+			"parameters": []
+		} ],
+		"id": "ww3aj0m91Hua1rA7vi8dTlcM0vwnc2TQ",
+		"nodeType": "sequence",
+		"parameters": []
+	}
+}
