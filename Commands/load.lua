@@ -19,13 +19,13 @@ function getInfo()
 end
 
 local alreadyLaunch = false
-local threshold = 25
 
 function Run(self, unitIds, parameter) 
 	units = unitIds
 	unitsSize = #units
   
   if parameter.transporterId == nil then 
+    Spring.Echo("Transporte ID doesn't have to be nil. If you use recommended Sensor, you assure that you have a Bear selected.")
     return FAILURE
   end
   
@@ -37,7 +37,7 @@ function Run(self, unitIds, parameter)
       return SUCCESS 
     end 
   end
-    
+  -- for each unit (except a transporter) add command for its loading
   for index = 1, #units do
     local unitId = units[index] 
     if (unitId ~= parameter.transporterId) then
@@ -54,9 +54,13 @@ function CheckLoadedUnits(units, tid)
   local isRunning = false
   for index = 1, #units do
     unitId = units[index]
+    -- unit isn't a transporter
     if unitId ~= tid then
+      -- is unit in the transporter?
       local transport = Spring.GetUnitTransporter(unitId)
+      -- if ins't
       if transport == nil then
+        -- there is no command left, add new command to command queue
         if #Spring.GetUnitCommands(tid) == 0 then 
           Spring.GiveOrderToUnit(tid, CMD.INSERT, {-1, CMD.LOAD_UNITS, CMD.OPT_SHIFT, unitId}, {"alt"})
         end

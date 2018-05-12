@@ -44,6 +44,7 @@ function Run(self, unitIds, parameter)
   
   -- no transporter
   if trans == nil then 
+    Spring.Echo("Transporte ID doesn't have to be nil. If you use recommended Sensor, you assure that you have a Bear selected.")
     return FAILURE
   end
   
@@ -51,10 +52,11 @@ function Run(self, unitIds, parameter)
   
   -- more hills than soldiers
   if hillsSize > unitsSize then 
+    Spring.Echo("More hills than units.")
     return FAILURE
   end
   hillsIndex = 1
-    
+  -- unit distribution
   for index = 1, #units do
     local unitId = units[index] 
     if (unitId ~= trans) and (hillsIndex <= hillsSize) then
@@ -70,6 +72,7 @@ end
 -- function for sending commands
 function CheckSoldiersPositions()
   local isRunning = false
+  -- RUNNING state until all units are on their place
   for unitId,hillsPosition in pairs(unitsGoals) do
     local lx, ly, lz = Spring.GetUnitPosition(unitId)
     if math.abs(lx - hillsPosition.x) > threshold or math.abs(ly - hillsPosition.y) > threshold or math.abs(lz - hillsPosition.z) > threshold then 

@@ -1,6 +1,6 @@
 local sensorInfo = {
-	name = "HillsPositions",
-	desc = "Returns id of transporter",
+	name = "TransporterID",
+	desc = "Returns id of transporter. It can return nil",
 	author = "Patik",
 	date = "2018-05-11",
 	license = "notAlicense",
@@ -15,22 +15,29 @@ function getInfo()
 end
 
 -- variables
-local tranposterID = nil
+local transporterID = nil
 
 
 -- @description return current wind statistics
 return function()
-  if tranposterID ~= nil then 
-    return tranposterID
+  -- transporterID was already found  and is not dead
+  if transporterID ~= nil then 
+    if not Spring.GetUnitIsDead(transporterID) then 
+      return transporterID
+    else 
+      transporterID = nil
+    end
   end
+  -- there are no units
   if #units == 0 then 
     return nil
   end
+  -- searching over all units, if bear is found, its id is stored and returned
   for i = 1, #units do
     local unitId = units[i]
     local unitDefID = Spring.GetUnitDefID(unitId)
     if UnitDefs[unitDefID].name == "armthovr" then
-       tranposterID = unitId 
+       transporterID = unitId 
        return unitId
     end          
   end 

@@ -20,6 +20,7 @@ function Run(self, unitIds, parameter)
 	unitsSize = #unitIds
   
   if parameter.transporterId == nil then 
+    Spring.Echo("Transporte ID doesn't have to be nil. If you use recommended Sensor, you assure that you have a Bear selected.")
     return FAILURE
   end
   
@@ -43,6 +44,7 @@ function CheckUnload(tid, units)
   for index = 1, #units do
     unitId = units[index]
     local transport = Spring.GetUnitTransporter(unitId)
+    -- is thre unloaded unit? 
     if transport ~= nil then
         isRunning = true
         break 

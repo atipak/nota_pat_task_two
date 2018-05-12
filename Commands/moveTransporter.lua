@@ -26,8 +26,10 @@ function Run(self, unitIds, parameter)
 	unitsSize = #unitIds
   
   if parameter.transporterId == nil then 
+    Spring.Echo("Transporte ID doesn't have to be nil. If you use recommended Sensor, you assure that you have a Bear selected.")
     return FAILURE
   end
+  -- becouse the target position in mission is enemy position, the target will be moved slightly away
   local target = parameter.targetPosition + Vec3(20,0,20) 
   
   -- order already launched
@@ -47,6 +49,7 @@ end
 function CheckTransporterPosition(tid, target)
   local isRunning = false
   local lx, ly, lz = Spring.GetUnitPosition(tid)
+  -- is tansporter outside the target area? -> RUNNING state
   if math.abs(lx - target.x) > threshold or math.abs(lz - target.z) > threshold then 
       isRunning = true  
   end
